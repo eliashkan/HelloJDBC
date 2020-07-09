@@ -2,13 +2,15 @@ package be.vdab.jdbc;
 
 import java.sql.*;
 
+import static be.vdab.jdbc.ConnectionUtils.*;
+
 public class SimpleBeerSearch {
     public static void main(String[] args) {
         try (
                 Connection con = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/beersdb?serverTimezone=UTC",
-                        "root",
-                        "1Dv1MyjL$f&D*msQkbHJ93ud#dGw%G");
+                        ADDRESS,
+                        USER,
+                        PASSWORD);
 
                 Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
