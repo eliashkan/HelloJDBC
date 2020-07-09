@@ -11,16 +11,16 @@ public class ConnectWithScanner {
 
         Scanner s = new Scanner(System.in);
 
-        String scannedPassword = null;
+        String scannedPassword = "";
 
-        while (scannedPassword == null) {
+        while (scannedPassword.equals("")) {
             System.out.println("Enter the password to the MySQL Server: ");
             scannedPassword = s.nextLine();
         }
 
         try (Connection con = DriverManager.getConnection(
-                address,
-                user,
+                ADDRESS,
+                USER,
                 scannedPassword)
         ) {
             System.out.println("connection is good");
