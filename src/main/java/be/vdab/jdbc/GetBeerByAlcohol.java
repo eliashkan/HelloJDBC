@@ -11,19 +11,19 @@ public class GetBeerByAlcohol {
                 ConnectionUtils.ADDRESS,
                 ConnectionUtils.USER,
                 ConnectionUtils.PASSWORD);
-             PreparedStatement st = con.prepareStatement(SQL_QUERY_BEER_BY_ALCOHOL)
+             PreparedStatement prepstat = con.prepareStatement(SQL_QUERY_BEER_BY_ALCOHOL)
         ) {
 
-            float i = 5F;
-            st.setFloat(1, i);
-            ResultSet rs = st.executeQuery();
+            float valueToFillInQuestionMark = 5F;
+            prepstat.setFloat(1, valueToFillInQuestionMark);
+            ResultSet rs = prepstat.executeQuery();
             while (rs.next()){
                 System.out.println(rs.getString("Name"));
                 System.out.println(rs.getFloat("Alcohol"));
 
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
         }
 
     }
